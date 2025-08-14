@@ -5,6 +5,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
 plt.rc('font', family='Malgun Gothic')
 
 np.random.seed(42)
@@ -44,3 +46,31 @@ df = pd.DataFrame({
 
 print(df.head(3))
 print(df.tail(3))
+df.to_csv('desc_std1_1.csv', index=False , encoding='utf-8') #파일로 저장
+# 시각화 : 산포도 / 박스플롯  2가지가 있음
+
+# 시각화 : 산포도
+x1 = np.random.normal(1, 0.05, size=100)
+x2 = np.random.normal(2, 0.05, size=100)
+
+plt.figure(figsize=(10, 6))
+plt.scatter(x1, class1, label=f'1반(평균={mean1:.2f}, σ={std1:.2f}')
+plt.scatter(x2, class2, label=f'2반(평균={mean2:.2f}, σ={std2:.2f}')
+plt.hlines(target_mean, 0.5, 2.5, colors='red', linestyles='dashed', label=f'공통평균={target_mean}')
+plt.title('동일 평균, 다른 성적 분포를 가진 두반 비교')
+plt.xticks([1,2], ['1반', '2반'])
+plt.ylabel('시험점수')
+plt.legend();
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# 시각화 : 박스 플롯
+plt.figure(figsize=(8,5))
+plt.boxplot([class1, class2], label=['1반', '2반'])
+plt.title('성적 분포를 가진 두반 비교')
+plt.ylabel('시험점수')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+plt.close()
