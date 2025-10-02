@@ -100,10 +100,6 @@ if has_masks and len(masks_np) > 0:
         sem_canvas[update] = color
         conf_map[update] = conf
 
-       
-        
-        # update가 True인 픽셀에만 해당 객체의 색상과 신뢰도를 기록합니다.       
-
 cv2.imwrite(os.path.join(OUT_DIR, 'seg_semantic.png'), sem_canvas)
 
 """
